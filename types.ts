@@ -25,6 +25,7 @@ export enum AppStep {
   MAPPING = 'MAPPING',
   REVIEW = 'REVIEW',
   SUCCESS = 'SUCCESS',
+  DASHBOARD = 'DASHBOARD',
 }
 
 export interface MappingSuggestionResponse {

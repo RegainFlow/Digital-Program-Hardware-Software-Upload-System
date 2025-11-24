@@ -30,7 +30,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
   const handleFile = (file: File) => {
     setIsProcessing(true);
     const reader = new FileReader();
-    
+
     reader.onload = (e) => {
       const content = e.target?.result as string;
       setTimeout(() => { // Simulate processing delay
@@ -38,7 +38,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
         setIsProcessing(false);
       }, 800);
     };
-    
+
     reader.readAsText(file);
   };
 
@@ -70,12 +70,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
   };
 
   return (
-    <div 
+    <div
       className={`
         w-full max-w-2xl mx-auto h-80 rounded-2xl border-2 border-dashed transition-all duration-300
         flex flex-col items-center justify-center relative overflow-hidden group
-        ${isDragging 
-          ? 'border-primary bg-primary-alpha15 scale-[1.02]' 
+        ${isDragging
+          ? 'border-primary bg-primary-alpha15 scale-[1.02]'
           : 'border-white/10 bg-white/[0.02] hover:border-primary/50'
         }
       `}
@@ -85,8 +85,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
     >
       {isProcessing ? (
         <div className="flex flex-col items-center animate-pulse">
-           <Icons.Spinner size={48} className="text-primary animate-spin mb-4" />
-           <p className="text-gray-400 font-mono">Analyzing file structure...</p>
+          <Icons.Spinner size={48} className="text-primary animate-spin mb-4" />
+          <p className="text-gray-400 font-mono">Analyzing file structure...</p>
         </div>
       ) : (
         <>
@@ -95,9 +95,9 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
             border border-white/10 shadow-lg group-hover:scale-110 transition-transform duration-300
             ${isDragging ? 'shadow-glow-medium bg-primary-alpha25' : ''}
           `}>
-             <Icons.Upload size={32} className={`${isDragging ? 'text-white' : 'text-primary'}`} />
+            <Icons.Upload size={32} className={`${isDragging ? 'text-white' : 'text-primary'}`} />
           </div>
-          
+
           <h3 className="text-xl font-medium text-white mb-2">
             Drag & Drop your Excel/CSV file
           </h3>
@@ -105,17 +105,18 @@ export const UploadZone: React.FC<UploadZoneProps> = ({ onFileProcessed }) => {
             or <span className="text-primary cursor-pointer hover:underline">browse files</span>
           </p>
 
-          <input 
-            type="file" 
+          <input
+            type="file"
             className="absolute inset-0 opacity-0 cursor-pointer"
             onChange={(e) => e.target.files && handleFile(e.target.files[0])}
             accept=".csv,.txt"
           />
-          
-          <button 
+
+          <button
             onClick={(e) => { e.stopPropagation(); loadMockData(); }}
-            className="z-10 text-xs text-gray-500 hover:text-primary underline font-mono mt-4"
+            className="z-10 mt-6 px-6 py-2 rounded-lg bg-white/5 border border-white/10 text-primary hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 font-medium text-sm flex items-center gap-2 group-hover:shadow-glow-subtle"
           >
+            <Icons.Lightning className="text-primary" weight="fill" />
             [DEMO] Load Sample Dataset
           </button>
         </>
