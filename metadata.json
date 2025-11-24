@@ -1,0 +1,5 @@
+{
+  "name": "RegainFlow Data Normalizer",
+  "description": "A high-performance React application designed to normalize non-standard Excel/CSV data into a centralized schema using Gemini AI for intelligent mapping. Features a glass-morphic neon design system.",
+  "requestFramePermissions": []
+}
